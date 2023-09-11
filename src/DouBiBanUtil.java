@@ -49,7 +49,7 @@ public class DouBiBanUtil {
         int judeplayer2 = 2;
         System.out.println("请问需要玩家2是电脑玩家吗？请选择 1 为 是，2 为 否");
         int needComp = scanner.nextInt();
-        if (needComp==1){
+        if (needComp == 1) {
             System.out.println("电脑上线");
         }
         while (true) {
@@ -60,10 +60,10 @@ public class DouBiBanUtil {
                 break;
             }
             boolean flag2;
-            if (needComp ==1){
+            if (needComp == 1) {
                 System.out.println("电脑在决定是否拿牌");
-                flag2 = compTakePokers(player2,pokerCards);
-            }else {
+                flag2 = compTakePokers(player2, pokerCards);
+            } else {
                 System.out.println("玩家2，您的拿牌指令为" + judeplayer2 + "，输入其他数字为不要");
                 flag2 = takePokers(player2, pokerCards, judeplayer2);
             }
@@ -134,16 +134,16 @@ public class DouBiBanUtil {
         System.out.println("电脑结束拿牌");
         return jude;
     }
+
     /**
      * 停止
-     *
      */
     private static void stop() {
         System.exit(0);
     }
 
     /**
-     * check
+     * 检查是否结束
      *
      * @return 返回获胜者，无获胜者返回 false
      */
@@ -174,5 +174,4 @@ public class DouBiBanUtil {
         }
         return false;
     }
-
 }

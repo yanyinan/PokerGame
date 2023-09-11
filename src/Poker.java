@@ -10,11 +10,7 @@ public class Poker {
     /**
      * 暂存poker
      */
-    private PokerCardsList poker;
-    /**
-     * 洗牌次数
-     */
-    private final int pokerNum = 3;
+    private final PokerCardsList poker;
 
     /**
      * 无限定大小王构造
@@ -41,6 +37,8 @@ public class Poker {
         // 扑克牌
         List<PokerCardsList.PokerCard> pokerCardsLists = this.poker.getPokers();
         // 洗牌
+
+        int pokerNum = 3;
         for (int i = 0; i < pokerNum; i++) {
             Collections.shuffle(pokerCardsLists);
         }
@@ -64,20 +62,19 @@ class PokerCardsList {
     //初始化基本牌花色
     static {
         // 黑桃 (Spade)
-        SUITS.add("\u2660");
+        SUITS.add("♠");
         // 红心 (Heart)
-        SUITS.add("\u2665");
+        SUITS.add("♥");
         // 梅花 (Club)
-        SUITS.add("\u2663");
+        SUITS.add("♣");
         // 方块 (Diamond)
-        SUITS.add("\u2666");
+        SUITS.add("♦");
     }
 
     /**
      * 暂存牌
      */
-    private List<PokerCard> pokers = new ArrayList<>();
-    ;
+    private final List<PokerCard> pokers = new ArrayList<>();
 
     public PokerCardsList(String gameStyle) {
         this(true, gameStyle);
@@ -95,7 +92,7 @@ class PokerCardsList {
         //初始化牌
         initializePokers(gameStyle);
         //添加大小王
-        initializeking(kingFlag);
+        initializing(kingFlag);
     }
 
     /**
@@ -103,7 +100,7 @@ class PokerCardsList {
      *
      * @param kingFlag 是否需要
      */
-    private void initializeking(Boolean kingFlag) {
+    private void initializing(Boolean kingFlag) {
         if (kingFlag) {
             pokers.add(new PokerCard(null, "大王", 0));
             pokers.add(new PokerCard(null, "小王", 1));
@@ -138,7 +135,7 @@ class PokerCardsList {
      *
      * @param rankCounter  初始值
      * @param orderCounter 初始值
-     * @return
+     * @return 返回点数
      */
     private int calculateFightOrder(AtomicInteger rankCounter, AtomicInteger orderCounter) {
         return 4 * rankCounter.getAndIncrement() + orderCounter.getAndIncrement() + rankCounter.get() + 2;
@@ -149,7 +146,7 @@ class PokerCardsList {
      *
      * @param rank        点数牌
      * @param rankCounter 初始值
-     * @return
+     * @return 返回点数
      */
     private int calculateDouBiBanOrder(String rank, AtomicInteger rankCounter) {
         int order=rankCounter.getAndIncrement() + 1;
@@ -191,13 +188,13 @@ class PokerCardsList {
     /**
      * 牌面
      */
-    class PokerCard {
+    static class PokerCard {
         //花色
-        private String color;
+        private final String color;
         //点数
-        private String point;
+        private final String point;
         //序列
-        private Integer oder;
+        private final Integer oder;
 
         //构造
         public PokerCard(String color, String point, Integer oder) {

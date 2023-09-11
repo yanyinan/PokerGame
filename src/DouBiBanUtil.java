@@ -143,7 +143,7 @@ public class DouBiBanUtil {
     }
 
     /**
-     * 检查是否
+     * 检查是否结束
      *
      * @return 返回获胜者，无获胜者返回 false
      */

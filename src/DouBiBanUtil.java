@@ -116,6 +116,7 @@ public class DouBiBanUtil {
     private static boolean compTakePokers(List<PokerCardsList.PokerCard> player, List<PokerCardsList.PokerCard> pokerCards) {
         System.out.println("电脑决定拿牌");
         boolean jude = false;
+
         boolean take = cardNumPlayer2 < compNum && cardNumPlayer2 < cardNumPlayer1;
         while (take) {
             PokerCardsList.PokerCard selectedCard = pokerCards.get(pokerNum++);
